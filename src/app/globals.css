@@ -24,3 +24,15 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: inherit;
+  scroll-behavior: smooth;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
