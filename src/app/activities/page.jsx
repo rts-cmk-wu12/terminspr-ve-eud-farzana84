@@ -1,5 +1,6 @@
 import ActivityCard from "@/components/ui/activity-card";
-import Headings from "@/components/typography/headings";
+import Header from "@/components/ui/header";
+import BottomNav from "@/components/ui/bottom-nav";
 
 export const metadata = {
   title: "Activities",
@@ -12,14 +13,15 @@ export default async function Activities() {
 
   return (
     <>
-      <main className="mb-[5em]">
-        <Headings heading="Activitier" />
+      <div className="mb-[5em]">
+        <Header title="Activiteter" />
         <ul>
           {data.map((activity) => (
             <ActivityCard key={activity.id} activity={activity} />
           ))}
         </ul>
-      </main>
+      </div>
+      <BottomNav />
     </>
   );
 }
