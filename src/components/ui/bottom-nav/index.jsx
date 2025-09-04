@@ -15,7 +15,7 @@ export default function BottomNav() {
             <GoSearch size={24} className="text-black" />
           </div>
         </Link>
-        <Link href="/calender">
+        <Link href="/login">
           <div className="flex items-center justify-center h-10 w-10 rounded-full ring-2 ring-black">
             <GoCalendar size={24} className="text-black" />
           </div>
