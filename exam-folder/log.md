@@ -24,7 +24,7 @@ Eftermiddag - (13:21)
 ## Dag 4
 
 Morgen - (8:02)  
-Eftermiddag - (tidspunkt)
+Eftermiddag - (15:58)
 
 ## Dag 5
 
