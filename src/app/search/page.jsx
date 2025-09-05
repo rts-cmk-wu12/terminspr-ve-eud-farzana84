@@ -27,11 +27,18 @@ export default async function SearchPage({ searchParams }) {
         <div className=" mt-20">
           <SearchBar />
         </div>
-        <ul>
-          {filteredActivities.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
-          ))}
-        </ul>
+        {filteredActivities.length > 0 ? (
+          <ul>
+            {filteredActivities.map((activity) => (
+              <ActivityCard key={activity.id} activity={activity} />
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-20 px-4 text-center text-white z-999">
+            Der blev ikke fundet nogle aktiviteter. Prøv at søge efter noget
+            andet.
+          </p>
+        )}
       </div>
       <BottomNav />
     </>

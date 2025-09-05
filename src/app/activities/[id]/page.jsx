@@ -1,5 +1,7 @@
 import BottomNav from "@/components/ui/bottom-nav";
 import Image from "next/image";
+import Button from "@/components/ui/button";
+import ShowIfAuthed from "@/actions/showIfAuthed";
 
 export const metadata = {
   title: "Activity Details",
@@ -22,11 +24,19 @@ export default async function ActivityDetailsPage({ params }) {
             height={200}
             className="h-[30em] w-full object-cover"
           />
+
+          <ShowIfAuthed>
+            <div className="absolute bottom-7 left-[6em]">
+              <Button buttontext={"Tilmeld"} />
+            </div>
+          </ShowIfAuthed>
         </div>
         <div className="p-[2em]">
           <h2 className="text-white ">{data.name}</h2>
           <div className="text-white ">
-            {data.minAge}-{data.maxAge} år
+            <span>
+              {data.minAge}-{data.maxAge} år
+            </span>
             <p>{data.description}</p>
           </div>
         </div>
@@ -35,3 +45,36 @@ export default async function ActivityDetailsPage({ params }) {
     </>
   );
 }
+/*
+  return (
+    <>
+      <section>
+        <div className="relative">
+          <Image src={newUrl} alt="activity" width={250} height={150} className="h-[30em] w-full object-cover" />
+
+          {role.value === "instructor" ? (
+            <></>
+          ) : !isTilmeldt ? (
+            <TidmeldButton activityId={activityId} />
+          ) : (
+            <div className="absolute bottom-7 left-[6em]">
+              <Button text={"Forlad"} />
+            </div>
+          )}
+        </div>
+        <div className="p-[2em]">
+          <h2 className="text-white text-[1.9em] font-semibold">{data.name}</h2>
+          <div className="text-white text-[1.4em]">
+            {data.minAge}-{data.maxAge} år
+            <p className="text-[18px]">{data.description}</p>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
+
+
+    
+*/

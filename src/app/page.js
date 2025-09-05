@@ -1,8 +1,9 @@
 import { Roboto } from 'next/font/google'
 import Image from "next/image";
 import logo from "../assets/logo.png";
-import Button from "@/components/ui/button";
+import ButtonAnimated from "@/components/ui/buttonAnimated";
 import Link from "next/link";
+
 
 const roboto = Roboto({
 subsets: ['latin'],
@@ -22,7 +23,7 @@ export default function Home() {
      />
          <div className="absolute bottom-20 left-1/2 -translate-x-1/2">
         <Link href="/activities">
-          <Button buttontext={"Kom i gang"} />
+          <ButtonAnimated/>
         </Link>
       </div>
     </div>

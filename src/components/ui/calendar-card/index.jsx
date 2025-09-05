@@ -9,8 +9,8 @@ export default async function CalendarCard({ calendarData }) {
   return (
     <>
       {!calendarData || calendarData.length < 1 ? (
-        <div className="bg-white w-[90%] flex flex-col justify-center items-start h-[9em] mt-[2em] pl-[1em] rounded-lg ">
-          No Activites available
+        <div className="bg-white w-[90%] flex flex-col justify-center items-start h-[9em] mt-[2em] p-[1em] rounded-lg ">
+          <h2 className="pt-5">No Activities available.</h2>
         </div>
       ) : (
         <div>

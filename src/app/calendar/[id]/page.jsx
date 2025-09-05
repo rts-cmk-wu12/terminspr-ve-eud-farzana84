@@ -1,53 +1,26 @@
 import Header from "@/components/ui/header";
-import FetchWithAuth from "@/utils/fetch-auth";
-//import FetchData from "@/utils/fetch-data";
-import { cookies } from "next/headers";
+import BottomNav from "@/components/ui/bottom-nav";
 
-export default async function CalendarDetails({ params }) {
-  const baseUrl = process.env.BASE_URL;
+export default async function activityOverview({ params }) {
+  const { id } = await params;
 
-  const calendarActivityId = (await params).id;
-  const cookieStore = await cookies();
-  const userId = cookieStore.get("landrup_userid");
-  const token = cookieStore.get("landrup_token");
-  const role = cookieStore.get("landrup_role");
+  const response = await fetch(`http://localhost:4000/api/v1/activities/${id}`);
+  const activity = await response.json();
+  const registeredUsers = activity.users || [];
 
-  if (role.value !== "instructor") {
-    redirect("/");
-  }
-
-  /*const userData = await FetchData(
-    `${baseUrl}/api/v1/activities/${calendarActivityId}`
-  );
-  const users = userData.users;
-  */
-
-  const data = await FetchWithAuth(
-    `${baseUrl}/api/v1/users/${userId.value}/roster/${calendarActivityId}`,
-    token.value
-  );
-  console.log("data", data);
+  // console.log("registeredUsers", registeredUsers);
 
   return (
-    <div className="p-5">
-      <Header title={data.name} />
-
-      {Array.isArray(data) && data.length > 0 ? (
-        data.map((user) => (
-          <div
-            key={`${user.firstname}-${user.lastname}-${user.activity}`}
-            className=""
-          >
-            <div className="text-lg text-white font-semibold">
-              {user.firstname} {user.lastname}
-            </div>
-          </div>
-        ))
-      ) : (
-        <div className="text-white">
-          No users are currently enrolled in this activity.
-        </div>
-      )}
-    </div>
+    <section className="flex flex-col">
+      <Header title={activity.name} />
+      <ul className="p-5 mt-40">
+        {registeredUsers.map((user) => (
+          <li key={user.id} className="text-white text-lg font-semibold mt-5">
+            {user.firstname} {user.lastname}
+          </li>
+        ))}
+      </ul>
+      <BottomNav />
+    </section>
   );
 }
